@@ -27,10 +27,12 @@ var getTotals = function () {
 
 $(document).ready(function() {
   getTotals();
+
   // if change quantity
   $('tbody').on("input", "tr td.quantity input", function(event) {
     getTotals();
   });
+
   // if add item to list
   $('form button').on("click", function (event) {
     event.preventDefault();
@@ -45,4 +47,9 @@ $(document).ready(function() {
     getTotals();
   });
   
+  // if remove items
+  $('tbody').on("click", ".btn.remove", function(event) {
+    $(this).closest('tr').remove();
+    getTotals();
+  })
 });
